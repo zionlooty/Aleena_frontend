@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+ 
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+.herosection{
+background-image: url(/assetss/jewerly/b1.png);
+background-size: cover;
+background-position: center;
+height: 50vh;
+overflow: hidden;
+}
+
+.image{
+  background-image: url(/assetss/jewerly/img2.jpeg);
+  background-size: cover;
+  background-position:center;
+}
+
+.imagecon{
+  background-image: url(/assetss/jewerly/wp8945989.webp);
+  background-size: cover;
+  background-position: center;
+}
+
+.imagec{
+  background-image: url(/assetss/jewerly/4.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+
+.img{
+  background-image: url(/assetss/jewerly/large.avif);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.back{
+  background-image: url(/assetss/jewerly/HD.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+html{
+  overflow-y:scroll;
+}
+
+.bodysection{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 100%;
+  padding: 10px;
+  
+}
+
+aside{
+  padding: 20px;
+  height: 100%;
+}
+
+main{
+  height: 100%;
+}
+
+.gridsection{
+  display: grid;
+  grid-template-columns: 75% 20%;
+  
+}
+
+aside{
+
+  height: 100%;
+}
+
+main{
+  
+  height: 100%;
+ 
+}
+
+
+
+.gridbody{
+  grid-template-columns: 65% 35%;
+  display: grid ;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+aside{
+   padding: 20px;
+  height: 100%;
+}
+
+
+main{
+  
+  width: 100%;
+  padding: 20px;
+}
+ html{
+  overflow-x: hidden;
+ }
+
+
+
+ .gridsec{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 100%;
+  padding: 10px;
+  background-color: black;
+ }
+
+
+ main{
+  
+  width: 100%;
+  padding: 20px;
+}
+aside{
+  padding: 20px;
+ height: 100%;
+}
+  
+
