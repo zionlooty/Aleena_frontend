@@ -68,14 +68,7 @@ html{
   
 }
 
-aside{
-  padding: 20px;
-  height: 100%;
-}
 
-main{
-  height: 100%;
-}
 
 .gridsection{
   display: grid;
@@ -83,10 +76,7 @@ main{
   
 }
 
-aside{
 
-  height: 100%;
-}
 
 main{
   

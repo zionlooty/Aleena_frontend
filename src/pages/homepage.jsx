@@ -22,7 +22,7 @@ function Homepage() {
           <p className="text-gray-700 text-sm md:text-base mt-2" >Ring, occassion pieces pandora & more collection</p>
           <button className="py-2 px-5 border w-[max-content] cursor-pointer">shop now</button>
         </div>
-          <div></div>
+        <div></div>
       </section>
 
 
@@ -64,66 +64,66 @@ function Homepage() {
       <section className="justify-center flex flex-col flex-wrap min-h[100vh] text-center items-center p-5  gap-5">
         <h1 className="text-2xl font-semibold text-center items-center">Popular Categories</h1>
         <div className="flex flex-row flex-wrap justify-center gap-10">
-          
-            <div className="w-40 h-40 rounded-full flex transition-transform duration-300 hover:scale-105  flex-col items-center justify-center ">
-              <div className="flex w-30  h-30 bg-gray-200 rounded-full justify-center item-center">
-                <img src="/assetss/jewerly/i.png" alt="" width={100} />
-              </div>
-              <h1 className="font-semibold text-sm text-center mt-2" >NECKLACE</h1>
+
+          <div className="w-40 h-40 rounded-full flex transition-transform duration-300 hover:scale-105  flex-col items-center justify-center ">
+            <div className="flex w-30  h-30 bg-gray-200 rounded-full justify-center item-center">
+              <img src="/assetss/jewerly/i.png" alt="" width={100} />
             </div>
-          
-            <div className=" h-40 w-40 rounded-full flex flex-col items-center transition-transform duration-300 hover:scale-105 justify-center ">
-              <div className=" h-30 w-30  flex justify-center bg-gray-200  rounded-full item-center">
-                <img src="/assetss/jewerly/png.png" alt="" width={100} />
-              </div>
-              <h1 className="font-semibold text-sm text-center mt-2" >RINGS</h1>
+            <h1 className="font-semibold text-sm text-center mt-2" >NECKLACE</h1>
+          </div>
+
+          <div className=" h-40 w-40 rounded-full flex flex-col items-center transition-transform duration-300 hover:scale-105 justify-center ">
+            <div className=" h-30 w-30  flex justify-center bg-gray-200  rounded-full item-center">
+              <img src="/assetss/jewerly/png.png" alt="" width={100} />
             </div>
+            <h1 className="font-semibold text-sm text-center mt-2" >RINGS</h1>
+          </div>
 
-          
-            <div className="w-40  h-40 rounded-full transition-transform duration-300 hover:scale-105  flex flex-col items-center justify-center">
-              <div className="flex justify-center   h-30 w-30 item-center  bg-gray-200 rounded-full">
-                <img src="/assetss/jewerly/wb.png" alt="" width={130} />
 
-              </div>
-              <h1 className="font-semibold text-sm text-center mt-2">BRACELETS</h1>
+          <div className="w-40  h-40 rounded-full transition-transform duration-300 hover:scale-105  flex flex-col items-center justify-center">
+            <div className="flex justify-center   h-30 w-30 item-center  bg-gray-200 rounded-full">
+              <img src="/assetss/jewerly/wb.png" alt="" width={130} />
+
             </div>
-           
-          
-            <div className="w-40 border-none h-40 rounded-full transition-transform duration-300 hover:scale-105 flex flex-col items-center justify-center ">
-              <div className="flex w-30 h-30 rounded-full justify-center bg-gray-200 item-center">
-                <img src="/assetss/jewerly/i.png" alt="" width={100} />
+            <h1 className="font-semibold text-sm text-center mt-2">BRACELETS</h1>
+          </div>
 
-              </div>
-              <h1 className="font-semibold text-sm text-center mt-2">EARRINGS</h1>
+
+          <div className="w-40 border-none h-40 rounded-full transition-transform duration-300 hover:scale-105 flex flex-col items-center justify-center ">
+            <div className="flex w-30 h-30 rounded-full justify-center bg-gray-200 item-center">
+              <img src="/assetss/jewerly/i.png" alt="" width={100} />
+
             </div>
-           
-         
-          
-            <div className="w-40 border-none h-40 rounded-full transition-transform duration-300 hover:scale-105 flex flex-col items-center justify-center ">
-              <div className="flex justify-center w-30 h-30 rounded-full bg-gray-200 item-center">
-                <img src="/assetss/jewerly/76.png" alt="" width={100} />
+            <h1 className="font-semibold text-sm text-center mt-2">EARRINGS</h1>
+          </div>
 
-              </div>
-              <h1 className="font-semibold text-sm text-center mt-2">CHAIN & DANGLES</h1>
+
+
+          <div className="w-40 border-none h-40 rounded-full transition-transform duration-300 hover:scale-105 flex flex-col items-center justify-center ">
+            <div className="flex justify-center w-30 h-30 rounded-full bg-gray-200 item-center">
+              <img src="/assetss/jewerly/76.png" alt="" width={100} />
+
             </div>
+            <h1 className="font-semibold text-sm text-center mt-2">CHAIN & DANGLES</h1>
+          </div>
 
-            
-       
-         
-            <div className="w-40 border-none h-40 flex-col transition-transform duration-300 hover:scale-105  rounded-full flex items-center justify-center ">
-              <div className="flex justify-center w-30 h-30 bg-gray-200 rounded-full item-center">
-                <img src="/assetss/jewerly/i.png" alt="" width={100} />
 
-              </div>
-              <h1 className="font-semibold text-sm text-center mt-2">EARRINGS</h1>
+
+
+          <div className="w-40 border-none h-40 flex-col transition-transform duration-300 hover:scale-105  rounded-full flex items-center justify-center ">
+            <div className="flex justify-center w-30 h-30 bg-gray-200 rounded-full item-center">
+              <img src="/assetss/jewerly/i.png" alt="" width={100} />
+
             </div>
+            <h1 className="font-semibold text-sm text-center mt-2">EARRINGS</h1>
+          </div>
 
-            
-          
+
+
         </div>
       </section>
 
-      <section className="justify-center flex flex-row min-h[100vh] items-center flex-wrap text-center  p-5 gap-10 bg-gray-100">
+      <section className="justify-center flex flex-col min-h[100vh] items-center flex-wrap text-center  p-5 gap-10 bg-gray-100">
         <div className="justify-center flex flex-col flex-wrap items-center">
           <h1 className="text-4xl font-semibold mt-2">Trendy Collection</h1>
           <p className="text-gray-500">Collect your loves with our newest arrivals</p>
@@ -176,13 +176,13 @@ function Homepage() {
             <h3 className="font-semibold">$39.00 - $59.00</h3>
 
           </div>
-          <div className="flex flex-wrap  gap-2 mt-5 text-sm">
-            <Link to={""}><FaCircle /></Link>
-            <Link to={""}><FaRegCircle /></Link>
-          </div>
 
         </div>
 
+        <div className="flex flex-wrap  gap-2 mt-5 text-sm">
+          <Link to={""}><FaCircle /></Link>
+          <Link to={""}><FaRegCircle /></Link>
+        </div>
 
 
       </section>
@@ -197,7 +197,7 @@ function Homepage() {
         </div>
       </section>
 
-      <section className="justify-center flex flex-row min-h[100vh] flex-wrap text-center  p-5 gap-10 bg-gray-100">
+      <section className="justify-center flex flex-col min-h[100vh] flex-wrap text-center items-center  p-5 gap-10 bg-gray-100">
         <div className="justify-center flex flex-col flex-wrap items-center">
           <h1 className="text-4xl font-semibold mt-2">Autumn Collection</h1>
           <p className="text-gray-500">Collect your loves with our newest arrivals</p>
@@ -250,14 +250,14 @@ function Homepage() {
             <h3 className="font-semibold">$39.00 - $59.00</h3>
 
           </div>
-          <div className="flex flex-wrap gap-2 mt-5 text-sm">
-            <Link to={""}><FaCircle /></Link>
-            <Link to={""}><FaRegCircle /></Link>
-          </div>
+
 
         </div>
 
-
+        <div className="flex flex-wrap gap-2 mt-5 text-sm">
+          <Link to={""}><FaCircle /></Link>
+          <Link to={""}><FaRegCircle /></Link>
+        </div>
 
       </section>
 

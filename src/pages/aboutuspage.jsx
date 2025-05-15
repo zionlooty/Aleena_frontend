@@ -18,7 +18,7 @@ function Aboutuspage() {
 
     <section className=' py-16  text-center'>
             <h2 className='text-red-500 text-lg mb-6 font-bold'>OUR STORY</h2>
-            <div className='max-w-3xl mx-auto space-y-6 text-gray-400 text-sm leading-relaxed'>
+            <div className='max-w-3xl mx-auto space-y-6 text-gray-400 text-sm '>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos alias, magnam repudiandae eius ipsa excepturi corporis culpa laboriosam unde obcaecati porro fuga aliquam, nam est reiciendis dolores neque impedit sapiente cupiditate cum deserunt sit. Repudiandae neque eaque ipsa ex dolore?</p>
 
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque quas commodi voluptas! Totam assumenda omnis ipsa magnam modi, ducimus animi, asperiores ullam earum dolor voluptate autem iusto facilis quisquam provident corrupti, maiores exercitationem perspiciatis rerum saepe atque labore? Debitis est cupiditate labore, quas sunt minus veniam maiores cum consequuntur laborum sed dignissimos placeat omnis rerum harum excepturi id nostrum modi quae itaque illum! Animi, cumque aspernatur rerum sit voluptatum nobis repellendus iure dolore fuga eaque optio officia, tempora maiores labore quod! Nam iusto asperiores, illo autem explicabo est cumque vitae corrupti laborum modi consectetur nesciunt rem rerum cupiditate vero fugiat?</p>

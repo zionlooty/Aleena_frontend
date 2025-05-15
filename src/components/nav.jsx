@@ -1,10 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CiHeart, CiSearch, CiShoppingCart } from 'react-icons/ci'
 import { IoPersonOutline } from 'react-icons/io5'
 import { RiArrowDropDownLine } from 'react-icons/ri'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
+import { userServices } from '../services/apiServices'
 
 function Navbar() {
+
+  const {token, getUserAuth} = useAuth()
+  const navigate = useNavigate()
+
+  const logout = ()=>{
+    userServices.logout()
+    getUserAuth()
+    navigate("/")
+  }
+
+  useEffect(()=>{
+    getUserAuth()
+    userServices.getUser()
+  },[token, getUserAuth])
+
   return (
     <div className='fixed top-0 left-0 w-[100%] z-50'>
        <div className="flex justify-between  top-0 left-0 w-full  items-center flex-wrap bg-white py-2 px-3 shadow-md">
@@ -17,10 +34,11 @@ function Navbar() {
       
               <h1 className="text-2x1 font-bold flex-1 text-center">ALEENA JEWELRY</h1>
               <div className="flex gap-3 items-center flex-1 justify-end">
-                <Link to={'/'}><IoPersonOutline /></Link>
+
+               { token ? <Link to={'/'}><IoPersonOutline /></Link> : null}
       
                 <Link to={'/'}><CiHeart /></Link>
-                <Link to={'/addtocart'}><CiShoppingCart /></Link>
+                <Link to={'/cart'}><CiShoppingCart /></Link>
               </div>
       
             </div>
@@ -40,9 +58,16 @@ function Navbar() {
       <Link className="text-lg" to={'/'}><RiArrowDropDownLine /></Link>
     </div>
     <div className="text-sm flex gap-3 font-medium">
-     
+    {token ? 
+    <button 
+      className='bg-red-500 text-white py-1 px-2 cursor-pointer rounded border-none'
+      onClick={logout}
+      >
+      logout
+      </button> : <>
       <Link to={'/login'}>LOG IN</Link>
       <Link to={'/signup'}>SIGN UP</Link>
+     </>}
     </div>
   </nav>
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 
 
@@ -10,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const Loginpage = () => {
 
+    
     const [email, setEmail] = useState("");
     const [pass_word, setPassword] = useState("");
     const navigate = useNavigate()
@@ -20,20 +22,16 @@ const Loginpage = () => {
         setLoading(true)
         try {
             const data = await axios.post("http://localhost:5000/user/login", { email_number: email, password: pass_word })
-
-            toast.success(data.data.message)
-
+            localStorage.setItem("token", data.data.message)
+            toast.success("login successfully")
             setTimeout(() => {
                 navigate("/")
-            }, 1500)
-
-
-
+            }, 1000)
+            
         } catch (error) {
-            // console.log(error)
             toast.error(error.response.data.message)
+        }finally{
             setLoading(false)
-
         }
     }
 

@@ -4,215 +4,39 @@ import { FaStar } from "react-icons/fa";
 import { IoIosStarHalf } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
+import { useEffect, useState } from "react";
+import ProductCard from "../components/productCard";
+import { toast } from "sonner";
+import axios from "axios";
+import {productServices} from "../services/apiServices"
 
+export const IMAGE_URL = import.meta.env.VITE_FILE_URL
 
 
 function Productspage() {
+    const[product, setProduct]=useState([])
+
+        const fetchAllProduct = async () => {
+            const res = await productServices.getAll()
+            productServices.getCart()
+           setProduct(res.message)
+        }
+
+        useEffect(() => {
+            fetchAllProduct()
+        }, [])
     return (
         <>
-            <nav className="flex justify-between items-center mt-30  flex-wrap w-[80%] m-auto bg-white p-5">
-                <h1 className="text-2xl font-semibold">ALEENA JEWERLY</h1>
-                <div className="flex gap-5">
-                    <Link className="text-yellow-300" to={"/"}>Home</Link>
-                    <Link to={"/"}>pages</Link>
-                    <Link to={"/"}>Shop</Link>
-                    <Link to={"/"}>Blog</Link>
-                </div>
-                <div className="flex gap-2">
-                    <Link to={"/"}><CiSearch /></Link>
-                    <Link to={"/addtocart"}><CiShoppingCart /></Link>
-                </div>
-            </nav>
 
-
-            <section className=" gridsection flex justify-center items-center p-10">
+            <section className=" gridsection flex pt-[100px] justify-center items-center p-10">
                 <aside className="flex flex-col  flex-wrap">
-                    <div className=" flex  flex-wrap justify-center items-center">
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-                        <div className="w-50 h-70 border-none transition-transform duration-300 hover:scale-105 justify-center items-center">
-                            <div className=" w-40 h-40 border-none justify-center items-center  bg-amber-300">
-                                <img src="/assetss/jewerly/ring.png" alt="" />
-                            </div>
-                            <h1 className="font-bold">Come Curve Bond</h1>
-                            <h2>$67.00</h2>
-                            <button>add to cart</button>
-                            <div className="flex">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <IoIosStarHalf />
-                            </div>
-                        </div>
-
-
-
-
-
+                    <div className="flex gap-6 flex-wrap">
+                    {product.map((item)=>{
+                        return (
+                            <ProductCard key={item.product_id} id={item.product_id} product={item} IMAGE_URL={import.meta.env.VITE_FILE_URL}/>
+                        )
+                    }
+                    )}
                     </div>
                 </aside>
 
