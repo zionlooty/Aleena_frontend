@@ -8,6 +8,7 @@ import Addtocartpage from "./pages/addtocartpage"
 import Aboutuspage from "./pages/aboutuspage"
 import Contactuspage from "./pages/contactuspage"
 import ViewPage from "./pages/view"
+import ProfilePage from "./pages/profilepage"
 
 
 const ProtectedRoute = ({children})=>{
@@ -44,6 +45,7 @@ function App() {
       <Route path="/contactus"  element={<Contactuspage />}/>
       <Route path="/view/:id"  element={<ViewPage />}/>
       <Route path="/cart"  element={<Addtocartpage />}/>
+      <Route path="/profile"  element={<ProfilePage />}/>
     </Routes> 
 
   

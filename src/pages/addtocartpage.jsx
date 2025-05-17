@@ -1,78 +1,69 @@
 import { Link } from "react-router-dom";
-
+import ProductCard from "../components/productCard";
+import { useEffect, useState } from "react";
+import { productServices } from "../services/apiServices";
+import CartCard from "../components/CartCard";
 
 function Addtocartpage() {
+  const [cartItems, setCartItems] = useState([])
+
+  const fetchCart = async () => {
+    const res = await productServices.getCart()
+    setCartItems(res)
+  }
+  useEffect(() => {
+    fetchCart()
+  }, [])
+
+
+
+
   return (
     <>
-      <div className="w-[100%] pt-[150px] flex justify-between h-18 items-center p-6 bg-gray-300">
 
-        <h1 className="font-bold text-2xl">prompt</h1>
-
-        <div className="flex gap-10">
-        <a href="" className="font-semibold">Deals</a>  
-         <a href=""  className="font-semibold">Clearance Status</a>
-         <a href="" className="font-semibold">Outlets</a>
-          <a href="" className="font-semibold">Gifts</a>
-        </div>
-      </div>
-      <div className="flex gap-2 p-6">
+      <div className="flex gap-2 p-6 pt-[100px]">
         <h1>Home</h1>
         <h1>Add to Cart</h1>
       </div>
+
       <div className="gridbody">
+
+
         <aside className="flex flex-col gap-10">
-         <div className="md:col-span-2 bg-white p-4 rounded-lg shadow">
-          <div className="flex items-center  pb-4">
-          <img src="/public/assetss/jewerly/HD.jpg" alt="" className="w-40 h-50 rounded-md" />
-            <div className="ml-4">
-              <h2 className="text-lg font-semibold">lonely sinner slip</h2>
-              <p className="text-gray-600">Color:Brown</p>
-              <p className="text-gray-600">Size:M</p>
-              <p className="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet.</p>
-              <div className="flex space-x-3 mt-2">
-                <button className="hover:underline  text-blue-600 cursor-pointer">Move to Wishlist</button>
-                <button className="hover:underline text-red-500 cursor-pointer">Remove</button>
-              </div>
-            </div>
-           
-          </div>
-         </div>
-         <div className="md:col-span-2 bg-white p-4 rounded-lg shadow">
-          <div className="flex items-center  pb-4">
-          <img src="/public/assetss/jewerly/HD.jpg" alt="" className="w-40 h-50 rounded-md" />
-            <div className="ml-4">
-              <h2 className="text-lg font-semibold">lonely sinner slip</h2>
-              <p className="text-gray-600">Color:Brown</p>
-              <p className="text-gray-600">Size:M</p>
-              <p className="text-gray-600 text-sm mt-2">Lorem ipsum dolor sit amet.</p>
-              <div className="flex space-x-3 mt-2">
-                <button className="hover:underline  text-blue-600 cursor-pointer">Move to Wishlist</button>
-                <button className="hover:underline text-red-500 cursor-pointer">Remove</button>
-              </div>
-            </div>
-          
-          </div>
-         </div>
+
+
+
+          {cartItems.map((item) => {
+
+            return (
+
+              <CartCard key={item.cart_id} carts={item} />
+            )
+          }
+          )}
+
+
+
         </aside>
         <main>
           <h1 className="text-2xl font-bold mb-2">Order Summary</h1>
           <div className="w-100 h-15 shadow-md">
-              <div className="flex justify-between p-5 ">
-                <h2 className="font-semibold">items Subtotal</h2>
-                <h3>$807.00</h3>
-              </div>
+            <div className="flex justify-between p-5 ">
+              <h2 className="font-semibold">items Subtotal</h2>
+              <h3>$807.00</h3>
+            </div>
           </div>
           <div className="w-100 h-15 shadow-md">
-              <div className="flex justify-between p-5 ">
-                <h2 className="font-semibold">Tax</h2>
-                <h3>$20.82</h3>
-              </div>
+            <div className="flex justify-between p-5 ">
+              <h2 className="font-semibold">Tax</h2>
+              <h3>$20.82</h3>
+            </div>
           </div>
           <div className="w-100 h-15 shadow-md">
-              <div className="flex justify-between p-5 ">
-                <h2 className="font-semibold">total</h2>
-                <h3>$827.50</h3>
-              </div>
+            <div className="flex justify-between p-5 ">
+              <h2 className="font-semibold">total</h2>
+              <h3>$827.50</h3>
+            </div>
           </div>
           <button className="w-[100%] bg-black text-white p-2 mt-2  hover:bg-blue-500">continue</button>
         </main>

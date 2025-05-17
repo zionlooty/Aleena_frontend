@@ -2,57 +2,67 @@ import axios from "axios"
 import { toast } from "sonner"
 
 const token = localStorage.getItem("token")
-const api =  axios.create({
+const api = axios.create({
     baseURL: import.meta.env.VITE_API || "http://localhost:5000/",
-    headers:{
+    headers: {
         "Authorization": `Bearer ${token}`
     }
 })
 
 
 export const productServices = {
-    getAll: async()=>{
+    getAll: async () => {
         try {
-            const {data} = await api.get("/products")
+            const { data } = await api.get("/products")
             return data
         } catch (error) {
             toast.error(error.response.data.message)
         }
     },
-    getProduct:  async(id)=>{
+    getProduct: async (id) => {
         try {
-            const {data} = await api.get(`/product/${id}`)
+            const { data } = await api.get(`/product/${id}`)
             return data
         } catch (error) {
             toast.error(error.response.data.message)
         }
     },
-    addToCart: async(product_id, product_price, product_quantity)=>{
+    addToCart: async (product_id, product_price, product_quantity) => {
         try {
-            const {data} =  await api.post("/add/cart",{product_id, product_price, product_quantity})
-            toast.success(data.message)
+            const { data } = await api.post("/add/cart", { product_id, product_price, product_quantity })
+           return toast.success(data.message)
         } catch (error) {
-            toast.error(error.response.data.message)
+          return  toast.error(error.response.data.message)
         }
 
     },
-    getCart: async()=>{
+    getCart: async () => {
         try {
-            const {data} = await api.get(`/cart`)
-            console.log (data)
+            const { data } = await api.get(`/cart`)
+            return data.message
         } catch (error) {
-            toast.error(error.response.data.message)
+            console.log(error)
+           return toast.error(error.response.data.message)
+        }
+    },
+    deleteCart: async (cart_id) => {
+        try {
+            const { data } = await api.delete(`/cart/${cart_id}`)
+            toast.success(data.message || "item successfully delete")
+            return data.message
+        } catch (error) {
+           return toast.error(error.response.data.message)
         }
     }
 }
 
 
 export const userServices = {
-    getUser: async()=>{
+    getUser: async () => {
         const res = await api.get("/user")
         return res.data.message
     },
-    logout: ()=>{
+    logout: () => {
         localStorage.removeItem("token")
     }
 }

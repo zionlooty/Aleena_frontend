@@ -35,7 +35,7 @@ function Navbar() {
               <h1 className="text-2x1 font-bold flex-1 text-center">ALEENA JEWELRY</h1>
               <div className="flex gap-3 items-center flex-1 justify-end">
 
-               { token ? <Link to={'/'}><IoPersonOutline /></Link> : null}
+               { token ? <Link to={'/profile'}><IoPersonOutline /></Link> : null}
       
                 <Link to={'/'}><CiHeart /></Link>
                 <Link to={'/cart'}><CiShoppingCart /></Link>

@@ -27,7 +27,7 @@ function Homepage() {
 
 
       <section className=" flex p-10 flex-wrap gap-10 justify-center items-center min-h[100vh]">
-        <Fade direction="left" duration={5000}>
+        <Fade direction="left" duration={2000}>
           <div className="image flex flex-wrap justify-between w-70 h-50">
 
             < div className="justify-center items-center p-5">
@@ -39,7 +39,7 @@ function Homepage() {
 
           </div>
         </Fade>
-        <Fade direction="down" duration={5000}>
+        <Fade direction="down" duration={2000}>
           <div className="imagec flex justify-between w-70 h-50">
             < div className="justify-center p-5">
               <small className="text-gray-600">2021 FASHION</small>
@@ -48,7 +48,7 @@ function Homepage() {
             </div>
           </div>
         </Fade>
-        <Fade direction="right" duration={5000}>
+        <Fade direction="right" duration={2000}>
           <div className="imagecon flex justify-between w-70 h-50">
             < div className="justify-center p-5">
               <small className="text-gray-600">NEW COLLECTION</small>

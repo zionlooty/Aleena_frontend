@@ -1,12 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 
 const Signup = () => {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         fullname: "",
         email: "",
@@ -14,7 +16,7 @@ const Signup = () => {
         password: "",
         confirmPassword: "",
     });
-
+    
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
