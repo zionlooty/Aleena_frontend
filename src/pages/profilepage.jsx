@@ -6,9 +6,9 @@ import { toast } from "sonner"
 import { productServices, userServices } from '../services/apiServices'
 
 const ProfilePage = () => {
-
     const [previewUrl, setpreviewUrl] = useState("")
     const [name, setName] = useState({
+        user_id: "",
         fullname: "",
         email: "",
         mobile: ""
@@ -17,16 +17,20 @@ const ProfilePage = () => {
     const fetchUser = async () => {
         try {
             const res = await userServices.getUser()
+            // console.log("API Response", res)
+            const user = Array.isArray(res) ? res[0] : null
+            if (!user) throw new error("no user found")
             setName({
-                fullname:"" ,
-                email :"",
-                mobile:""
+                user_id: user.user_id,
+                fullname: user.fullname || "",
+                email: user.email || "",
+                mobile: user.mobile || ""
             })
-          
+
         } catch (error) {
-            console.error("error fetching user")
+            console.error("error fetching user", error)
             toast.error("error fetching user")
-           
+
         }
     }
 
@@ -34,6 +38,18 @@ const ProfilePage = () => {
         fetchUser()
     }, [])
 
+
+    const handleUpdate = async (e) => {
+        e.preventDefault()
+        try {
+            
+            await userServices.updateUser(name, name.user_id)
+            toast.success("profile updated successfully")
+        } catch (error) {
+            toast.error("failed to uodate profile")
+            console.log(error)
+        }
+    }
 
     return (
         <>
@@ -64,21 +80,21 @@ const ProfilePage = () => {
 
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Fullname</label>
-                            <input type="text" name="fullname" value={name.fullname} onChange={(e)=>setName({...name,[e.target.name]: e.target.value})} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" v />
+                            <input type="text" value={name.fullname} onChange={(e) => setName({ ...name, fullname: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
                         </div>
 
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Email</label>
-                            <input type="email" name="email" value={name.fullname} onChange={(e)=>setName({...name,[e.target.name]: e.target.value})} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
+                            <input type="email" value={name.email} onChange={(e) => setName({ ...name, email: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
                         </div>
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Mobile.no</label>
-                            <input type="text" name='mobile' value={name.fullname} onChange={(e)=>setName({...name,[e.target.name]: e.target.value})} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
+                            <input type="tel" value={name.mobile} onChange={(e) => setName({ ...name, mobile: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
                         </div>
                     </div>
                     <div className='mt-3 justify-center items-center'>
 
-                        <button type='submit' className='px-6 py-2 bg-amber-500 text-white rounded-md text-xl cursor-pointer'>updated User</button>
+                        <button type='submit' onClick={handleUpdate} className='px-6 py-2 bg-amber-500 text-white rounded-md text-xl cursor-pointer'>update User</button>
                     </div>
                 </form>
             </div>
