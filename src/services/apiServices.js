@@ -53,6 +53,19 @@ export const productServices = {
         } catch (error) {
            return toast.error(error.response.data.message)
         }
+    }, 
+    updateCartQuantity: async (cart_id, quantity)=>{
+        const res =await api.patch(`/cart/${cart_id}/quantity`,{
+            product_quantity:quantity
+        })
+    }
+}
+
+
+export const orderServices={
+    getOrder: async ()=>{
+        const res = await api.get(`/order/${user_id}`)
+        return res.data.message
     }
 }
 

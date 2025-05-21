@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@tailwindcss/vite": "^4.0.8",
+    "antd": "^5.25.2",
     "axios": "^1.9.0",
     "react": "^19.0.0",
     "react-awesome-reveal": "^4.3.1",

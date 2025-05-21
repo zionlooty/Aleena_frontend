@@ -20,7 +20,7 @@ function Navbar() {
   useEffect(()=>{
     getUserAuth()
     userServices.getUser()
-  },[token, getUserAuth])
+  },[token, getUserAuth, userServices.getUser])
 
   return (
     <div className='fixed top-0 left-0 w-[100%] z-50'>
