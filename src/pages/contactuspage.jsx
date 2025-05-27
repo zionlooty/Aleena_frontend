@@ -87,8 +87,8 @@ function Contactuspage() {
               <p className='text-gray-400 text-sm'>N016 Anuoluwapo Street Fate/tanke</p>
             </div>
           </div>
-          <div className='mt-10 mx-auto max-w-3xl'>
-            <iframe className='w-full h-54 rounded-lg shadow-lg' src="https://www.google.com/maps/dir/@7.3869174,3.9050605,9z?entry=ttu&g_ep=EgoyMDI1MDMzMS4wIKXMDSoASAFQAw%3D%3D" frameborder="0"></iframe>
+          <div className='mt-10 mx-auto max-w-3xl rounded'>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0703131176906!2d4.601463673606019!3d8.492544697158381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10364cfd7eb29197%3A0xe6a4affa170d699a!2sECWA%20Church%20Fate-Tanke!5e0!3m2!1sen!2sng!4v1747833742750!5m2!1sen!2sng" width="800" height="350" className='rounded-md' allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </main>
       </section>

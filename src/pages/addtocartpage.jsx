@@ -3,9 +3,19 @@ import ProductCard from "../components/productCard";
 import { useEffect, useState } from "react";
 import { productServices } from "../services/apiServices";
 import CartCard from "../components/CartCard";
+import { useNavigate } from "react-router-dom";
 
 function Addtocartpage() {
   const [cartItems, setCartItems] = useState([])
+
+const navigate =useNavigate()
+
+  const itemsSubtotal = cartItems.reduce((sum, item) => {
+    return sum + item.product_price * item.product_quantity
+  }, 0)
+ 
+  const deliveryFee = 5000
+  const grandTotal = itemsSubtotal + deliveryFee
 
   const fetchCart = async () => {
     const res = await productServices.getCart()
@@ -46,28 +56,28 @@ function Addtocartpage() {
 
         </aside>
         <main>
-          <h1 className="text-2xl font-bold mb-2">Order Summary</h1>
-          <div className="w-100 h-15 shadow-md">
-            <div className="flex justify-between p-5 ">
-              <h2 className="font-semibold">items Subtotal</h2>
-              <h3>$807.00</h3>
+          <div className="w-[70%] h-[30%] rounded-md bg-white shadow p-5">
+
+
+            <h1 className="text-2xl font-semibold mb-4">Cart Summary</h1>
+            <div className="w-80 h-15 shadow">
+              <div className="flex justify-between mb-3 p-2 ">
+                <h2 className=" text-xl">Subtotal</h2>
+                <h3 className="text-xl font-semibold">&#8358;{Intl.NumberFormat().format(itemsSubtotal)}</h3>
+              </div>
             </div>
+            <button onClick={()=>navigate("/order",{
+              state:{
+                subtotal: itemsSubtotal,
+                deliveryFee: deliveryFee,
+                total: grandTotal
+              }
+            })} className="w-[100%] bg-amber-500 text-white py-3 px-4 rounded-md text-xl mt-2  hover:bg-amber-600">Checkout</button>
           </div>
-          <div className="w-100 h-15 shadow-md">
-            <div className="flex justify-between p-5 ">
-              <h2 className="font-semibold">Tax</h2>
-              <h3>$20.82</h3>
-            </div>
-          </div>
-          <div className="w-100 h-15 shadow-md">
-            <div className="flex justify-between p-5 ">
-              <h2 className="font-semibold">total</h2>
-              <h3>$827.50</h3>
-            </div>
-          </div>
-          <button className="w-[100%] bg-black text-white p-2 mt-2  hover:bg-blue-500">continue</button>
+
         </main>
       </div>
+
 
       <footer className="flex-wrap bg-gray-100 min-h[100vh] mt-20">
         <div className="flex justify-between flex-wrap items-center p-5">

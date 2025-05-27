@@ -2,15 +2,16 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { BiUserPin } from 'react-icons/bi'
 import { toast } from "sonner"
-import {  orderServices, userServices } from '../services/apiServices'
-import {  Table } from 'antd'
+import { orderServices, userServices } from '../services/apiServices'
+import { Table } from 'antd'
 import { Link } from 'react-router-dom'
-
 import { GoTrash } from 'react-icons/go'
+
+
 
 const ProfilePage = () => {
     const [previewUrl, setpreviewUrl] = useState("")
-    const [order, setOrder]= useState([])
+    const [order, setOrder] = useState([])
     const [name, setName] = useState({
         user_id: "",
         fullname: "",
@@ -30,7 +31,7 @@ const ProfilePage = () => {
 
         }
     }
-    
+
 
     useEffect(() => {
         fetchUser()
@@ -59,42 +60,55 @@ const ProfilePage = () => {
     }
 
 
-    const columns=[
+    const columns = [
         {
             title: "S/NO",
             dataIndex: "no",
             key: "no"
         },
         {
-            title:"product Name",
-            dataIndex:"product_name",
-            key:"product_name",
+            title: "product Name",
+            dataIndex: "product_name",
+            key: "product_name",
         },
         {
-            title:"Quantity",
-            dataIndex:"quantity",
-            key:"quantity",
+            title: "Quantity",
+            dataIndex: "quantity",
+            key: "quantity",
         },
         {
-            title:"Delivery Status",
-            dataIndex:"delivery_status",
-            key:"delivery_status",
+            title: "Delivery Status",
+            dataIndex: "delivery_status",
+            key: "delivery_status",
         },
         {
-            title:"Delivery Address",
-            dataIndex:"delivery_address",
-            key:"delivery_address",
+            title: "Delivery Address",
+            dataIndex: "delivery_address",
+            key: "delivery_address",
         },
         {
             title: "Action",
             dataIndex: "action",
             key: "action"
         }
-        
+
     ]
     useEffect(() => {
         fetchAllOrder()
     }, [])
+
+
+    function getImagePreview(e) {
+        const file = e.target.files[0]
+        const fileType = file.name.split(".").pop()
+        if (file.size > 40000000) {
+            toast.error("file too large")
+        } else if (fileType !== "jpeg" && fileType !== "png") {
+            toast.error("file not supported")
+        } else {
+            setpreviewUrl(file)
+        }
+    }
 
 
     return (
@@ -105,7 +119,7 @@ const ProfilePage = () => {
                         previewUrl ?
                             <div className="flex flex-col justify-center items-center w-[100px] h-[100px] gap-3 cursor-pointer overflow-hidden">
 
-                                {/* <img src={URL.createObjectURL(previewUrl)} alt="" /> */}
+                                <img src={URL.createObjectURL(previewUrl)} alt="" />
 
                             </div>
 
@@ -116,7 +130,7 @@ const ProfilePage = () => {
                                     <BiUserPin />
                                     <span>upload Image</span>
                                 </label>
-                                {/* <input type="file" id="file" className="hidden" onChange={getImagePreview} /> */}
+                                <input type="file" id="file" className="hidden" onChange={getImagePreview} />
                             </div>
                     }
                     <div >
@@ -140,36 +154,36 @@ const ProfilePage = () => {
                     </div>
                 </form>
             </div>
-           <div className='p-15'>
-            <h2 className='text-lg font-bold mb-4'>Order history</h2>
-           
-           </div>
-      { order.length > 0 ?  <Table dataSource={order.map((order, index)=>(
+            <div className='p-15'>
+                <h2 className='text-lg font-bold mb-4'>Order history</h2>
+
+            </div>
+            {order.length > 0 ? <Table dataSource={order.map((order, index) => (
                 {
                     no: index + 1,
                     key: index,
                     user_id: order.user_id,
                     product_name: order.product_name,
                     delivery_address: order.delivery_address,
-                    delivery_status : order.delivery_status,
+                    delivery_status: order.delivery_status,
                     quantity: order.product_quantity,
-                    action:(
+                    action: (
                         <Link>View </Link>
 
                     )
-                    
+
                 }
-           ))}
-           columns={columns}
-           
-           /> :
-           <div className='flex flex-col items-center justify-center  h-96 bg-white rounded-md shadow-md'>
+            ))}
+                columns={columns}
+
+            /> :
+                <div className='flex flex-col items-center justify-center  h-96 bg-white rounded-md shadow-md'>
                     <GoTrash className='text-8xl text-gray-300 mb-4' />
-               <h1 className='text-5xl text-gray-300 font-semibold'>No Order found for user</h1>
-           </div>
-           }
-                
-                    
+                    <h1 className='text-5xl text-gray-300 font-semibold'>No Order found for user</h1>
+                </div>
+            }
+
+
         </>
     )
 }
