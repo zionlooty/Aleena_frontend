@@ -42,7 +42,7 @@ export const productServices = {
             return data.message
         } catch (error) {
             console.log(error)
-           return toast.error(error.response.data.message)
+           return error.response.data.message
         }
     },
     deleteCart: async (cart_id) => {
@@ -76,7 +76,7 @@ export const userServices = {
         return res.data.message
     },
     updateUser: async(data, user_id)=>{
-        const res = await api.patch(`/user/${user_id}`, data)
+        const res = await api.patch(`/user/${user_id}`, {...data})
         res.data
     },
     logout: () => {

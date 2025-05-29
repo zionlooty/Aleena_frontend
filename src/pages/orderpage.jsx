@@ -1,13 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GrFormPrevious } from 'react-icons/gr'
 import { IoCheckmarkCircle } from 'react-icons/io5'
 import { MdNavigateNext } from 'react-icons/md'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import { toast } from 'sonner'
+import { userServices } from '../services/apiServices'
 
 const Orderpage = () => {
     const location = useLocation()
     const {subtotal, deliveryFee, total} = location.state || {}
+    
+    const [name, setName] = useState([])
+
+    const fetchUser = async () => {
+        try {
+            const res = await userServices.getUser()
+            setName(res[0])
+
+        } catch (error) {
+            console.error("error fetching user", error)
+            toast.error("error fetching user")
+
+        }
+    }
+
+
+    useEffect(()=>{
+        fetchUser()
+    },[])
+
     return (
         <>
             <section className='grid  bg-gray-200 pt-[100px] justify-center px-7 gap-4'>
@@ -21,15 +43,14 @@ const Orderpage = () => {
                                 <h1 className='text-xl font-semibold'> 1.CUSTOMER ADDRESS</h1>
                                 </div>
                                 <div className='flex items-center text-blue-500 text-xl gap-4'>
-
-                                    <Link to={"/address"}>change</Link>
+                                    <Link to={"/profile"}>change</Link>
                                     <MdNavigateNext />
                                 </div>
                             </div>
                             <div className='w-full border border-gray-200 mb-5'></div>
                             <div>
-                                <h1 className='mb-2 text-xl'>Olamide Yusuf</h1>
-                                <p>No16 anuoluwapo street | Kwara - Ilorin | +234 9067823827</p>
+                                <h1 className='mb-2 text-xl uppercase'>{name.fullname}</h1>
+                                <p>{name.address}</p>
                             </div>
                         </div>
                         <div className='w-full h-[200px] bg-white px-5 py-3 rounded-md shadow mb-5 '>
@@ -50,14 +71,13 @@ const Orderpage = () => {
                     </div>
                     <div className='w-full  bg-white px-5 py-3 rounded-md shadow mb-5 '>
                         <div className='flex gap-4 items-center'>
-
                             <IoCheckmarkCircle className='text-2xl text-gray-400' />
                             <h1 className='text-gray-400 text-2xl'>PAYMENT METHOD</h1>
                         </div>
                     </div>
                     <div className='flex gap-2 text-blue-400   text-sm items-center'>
                     <GrFormPrevious className='text-xl' /> 
-                    <Link className='hover:underline'> go back & continue shopping</Link>
+                    <Link className='hover:underline' to={"/cart"}> go back & continue shopping</Link>
                     </div>
 
                 </main>

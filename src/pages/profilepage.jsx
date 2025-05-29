@@ -16,14 +16,22 @@ const ProfilePage = () => {
         user_id: "",
         fullname: "",
         email: "",
-        mobile: ""
-
+        mobile: "",
+        address:""
     })
+
     const fetchUser = async () => {
         try {
             const res = await userServices.getUser()
             const user = Array.isArray(res) ? res[0] : null
-            setName(user)
+            console.log(user)
+           setName({
+            user_id: res[0].user_id,
+            fullname: res[0].fullname,
+            email: res[0].email,
+            mobile: res[0].mobile,
+            address: res[0].address
+           })
 
         } catch (error) {
             console.error("error fetching user", error)
@@ -35,9 +43,9 @@ const ProfilePage = () => {
 
     useEffect(() => {
         fetchUser()
-    }, [name, fetchUser, userServices.getUser])
+    }, [])
 
-
+    // const {user_id, fullname, email, mobile, address} = name
     const handleUpdate = async (e) => {
         e.preventDefault()
         try {
@@ -113,7 +121,7 @@ const ProfilePage = () => {
 
     return (
         <>
-            <div className='flex justify-center items-center '>
+            <div className='flex justify-center items-center pt-[100px] '>
                 <form>
                     {
                         previewUrl ?
@@ -125,7 +133,7 @@ const ProfilePage = () => {
 
                             :
 
-                            <div className="flex flex-col pt-[100px] gap-2">
+                            <div className="flex flex-col pt-[100px] mb-5 gap-2">
                                 <label htmlFor="file" className="flex flex-col  justify-center items-center w-[150px] h-[150px] gap-3 cursor-pointer bg-slate-300  rounded-full">
                                     <BiUserPin />
                                     <span>upload Image</span>
@@ -147,6 +155,10 @@ const ProfilePage = () => {
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Mobile.no</label>
                             <input type="tel" value={name.mobile} onChange={(e) => setName({ ...name, mobile: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <label htmlFor="">Address</label>
+                            <input type="text" value={name.address} onChange={(e) => setName({ ...name, address: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
                         </div>
                     </div>
                     <div className='mt-3 justify-center items-center'>

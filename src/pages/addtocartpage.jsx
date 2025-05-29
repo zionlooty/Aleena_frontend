@@ -4,26 +4,31 @@ import { useEffect, useState } from "react";
 import { productServices } from "../services/apiServices";
 import CartCard from "../components/CartCard";
 import { useNavigate } from "react-router-dom";
+import { TbTrash } from "react-icons/tb";
 
 function Addtocartpage() {
   const [cartItems, setCartItems] = useState([])
+  const [empty, setEmpty] = useState("")
 
-const navigate =useNavigate()
+const navigate = useNavigate()
 
-  const itemsSubtotal = cartItems.reduce((sum, item) => {
+  const itemsSubtotal = cartItems.length > 0 ?  cartItems.reduce((sum, item) => {
     return sum + item.product_price * item.product_quantity
-  }, 0)
+  }, 0) : null
  
   const deliveryFee = 5000
   const grandTotal = itemsSubtotal + deliveryFee
 
   const fetchCart = async () => {
     const res = await productServices.getCart()
-    setCartItems(res)
+    if(typeof res !== "string"){
+      setCartItems(res)
+    }
+    setEmpty(res)
   }
   useEffect(() => {
     fetchCart()
-  }, [])
+  }, [fetchCart, cartItems])
 
 
 
@@ -43,14 +48,19 @@ const navigate =useNavigate()
 
 
 
-          {cartItems.map((item) => {
+          {cartItems.length > 0 ? cartItems.map((item) => {
 
             return (
 
               <CartCard key={item.cart_id} carts={item} />
             )
-          }
-          )}
+          }):
+          <div className="flex justify-center items-center flex-col gap-3">
+            <TbTrash className="text-7xl text-gray-500"/>
+            <h1 className="capitalize text-4xl text-gray-500">{empty}</h1>
+          </div>
+          
+        }
 
 
 

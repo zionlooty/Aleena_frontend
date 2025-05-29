@@ -5,6 +5,7 @@ import { MdDeleteOutline } from "react-icons/md";
 import { toast } from 'sonner';
 
 const CartCard = ({ carts }) => {
+
     const [quantity, setQuantity]= useState(carts.product_quantity || 1)
 
     const updateQuantity=async (newQuantity)=>{
@@ -21,13 +22,12 @@ const CartCard = ({ carts }) => {
     }
     const decreaseQuantity=()=>{
         if(quantity>1) updateQuantity(quantity - 1)
+
     }
 
     const handleRemove = async (cart_id) =>{
-        const res = await productServices.deleteCart(cart_id)
-        if(res){
-            productServices.getCart()
-        }
+        await productServices.deleteCart(cart_id)
+        productServices.getCart()
       }
       
       

@@ -19,7 +19,7 @@ function Addresspage() {
                         </div>
                         <h3 className="font-semibold mb-3 text-gray-700 text-xl">ADDRESS BOOK</h3>
                         <div className="w-[80%] h-[40%] border-gray-300 rounded-md border p-4 ">
-                            <div className="flex justify-between">
+                            <div className="flex justify-between items-center">
                                 <div>
 
                                 <h1 className='mb-2 text-xl'>Olamide Yusuf</h1>
