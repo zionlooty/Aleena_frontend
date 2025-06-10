@@ -75,6 +75,7 @@ export const userServices = {
         const res = await api.get("/user")
         return res.data.message
     },
+   
     updateUser: async(data, user_id)=>{
         const res = await api.patch(`/user/${user_id}`, {...data})
         res.data

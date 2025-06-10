@@ -47,6 +47,9 @@ const Signup = () => {
         try {
             const data = await axios.post("http://localhost:5000/new/user", { ...formData });
             toast.success(data.data.message);
+            setTimeout(() => {
+                navigate("/login")
+            }, 1000)
         } catch (error) {
             toast.error(error.response?.data?.message || "Something went wrong");
         }
@@ -82,7 +85,7 @@ const Signup = () => {
                             <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} className="w-full px-4 py-2 mt-1  border rounded-md bg-white text-gray-800 outline-none" />
                         </div>
                         <div className="flex justify-center mt-5">
-                            <input type="submit" value="Register" className="w-40 rounded-md border border-slate-300 bg-black text-white p-2 hover:bg-blue-500 cursor-pointer" />
+                            <input type="submit" value="Register" className="w-40 rounded-md border border-slate-300 bg-amber-500 text-white p-2 hover:bg-amber-600 cursor-pointer" />
 
                         </div>
                     </form>

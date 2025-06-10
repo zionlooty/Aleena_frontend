@@ -6,6 +6,7 @@ import { orderServices, userServices } from '../services/apiServices'
 import { Table } from 'antd'
 import { Link } from 'react-router-dom'
 import { GoTrash } from 'react-icons/go'
+import useAuth from '../hooks/useAuth'
 
 
 
@@ -39,7 +40,7 @@ const ProfilePage = () => {
 
         }
     }
-
+    
 
     useEffect(() => {
         fetchUser()
@@ -111,7 +112,7 @@ const ProfilePage = () => {
         const fileType = file.name.split(".").pop()
         if (file.size > 40000000) {
             toast.error("file too large")
-        } else if (fileType !== "jpeg" && fileType !== "png") {
+        } else if (fileType !== "jpeg" && fileType !== "png" && fileType !== "jpg") {
             toast.error("file not supported")
         } else {
             setpreviewUrl(file)
@@ -133,36 +134,42 @@ const ProfilePage = () => {
 
                             :
 
-                            <div className="flex flex-col pt-[100px] mb-5 gap-2">
+                            <div className="flex items-center justify-center pt-[100px] mb-5 gap-5">
                                 <label htmlFor="file" className="flex flex-col  justify-center items-center w-[150px] h-[150px] gap-3 cursor-pointer bg-slate-300  rounded-full">
                                     <BiUserPin />
                                     <span>upload Image</span>
                                 </label>
                                 <input type="file" id="file" className="hidden" onChange={getImagePreview} />
+                                <h1 className='text-xl font-semibold text-gray-600'>{name.fullname}</h1>
                             </div>
                     }
-                    <div >
+                    <div  >
+                        <div className='flex gap-5 flex-wrap mb-4'>
 
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Fullname</label>
-                            <input type="text" value={name.fullname} onChange={(e) => setName({ ...name, fullname: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
+                            <input type="text" value={name.fullname} onChange={(e) => setName({ ...name, fullname: e.target.value })} className="w-80 px-4 py-2 mt-2 border text-center rounded-md outline-none" />
                         </div>
 
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Email</label>
-                            <input type="email" value={name.email} onChange={(e) => setName({ ...name, email: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
+                            <input type="email" value={name.email} onChange={(e) => setName({ ...name, email: e.target.value })} className="w-80 px-4 py-2 mt-2 border text-center rounded-md outline-none" />
                         </div>
+                        </div>
+                        <div className='flex flex-wrap mb-4 gap-5'>
+
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Mobile.no</label>
-                            <input type="tel" value={name.mobile} onChange={(e) => setName({ ...name, mobile: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
+                            <input type="tel" value={name.mobile} onChange={(e) => setName({ ...name, mobile: e.target.value })} className="w-80 px-4 py-2 text-center mt-2 border rounded-md outline-none" />
                         </div>
                         <div className="flex flex-col gap-1">
                             <label htmlFor="">Address</label>
-                            <input type="text" value={name.address} onChange={(e) => setName({ ...name, address: e.target.value })} className="w-80 px-4 py-2 mt-2 border rounded-md outline-none" />
+                            <input type="text" value={name.address} onChange={(e) => setName({ ...name, address: e.target.value })} className="w-80 px-4 py-2 text-center mt-2 border rounded-md outline-none" />
+                        </div>
                         </div>
                     </div>
-                    <div className='mt-3 justify-center items-center'>
-                        <button type='submit' onClick={handleUpdate} className='px-6 py-2 bg-amber-500 text-white rounded-md text-xl cursor-pointer'>update User</button>
+                    <div className='flex justify-center items-center'>
+                        <button type='submit' onClick={handleUpdate} className='px-6 py-2 hover:bg-amber-600 bg-amber-500 text-white rounded-md text-xl cursor-pointer'>update User</button>
                     </div>
                 </form>
             </div>

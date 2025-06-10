@@ -13,23 +13,10 @@ function Contactuspage() {
   return (
     <>
 
-      <nav className='pt-[100px] flex justify-between flex-wrap text-white items-center px-10 py-4 bg-black w-full '>
-
-        <div>
-          <img src="/assetss/jewerly/me.png" alt="" width={100} />
-        </div>
-        <div className='flex flex-wrap items-center gap-10'>
-          <Link to="/" className='text-white'>Home</Link>
-          <Link to="/aboutus" className='text-white'>About Us</Link>
-          <button className='text-white px-6 py-2 rounded-3xl border hover:bg-white hover:text-black transition duration-300 border-white'>Contact Us</button>
-        </div>
-
-      </nav>
-
-      <section className='flex justify-center items-center p-5 flex-col bg-black flex-wrap min-h[100vh]'>
+      <section className='flex justify-center pt-[150px] items-center p-5 flex-col bg-black flex-wrap min-h[100vh]'>
         <h1 className='text-4xl font-bold text-white mb-2'>Contact Us</h1>
         <h2 className='text-white'>Home / Contact</h2>
-        
+
       </section>
 
       <section className='gridsec'>
@@ -48,8 +35,8 @@ function Contactuspage() {
               </div>
               <div className='flex flex-col gap-2 mb-4'>
                 <label htmlFor="" className='text-gray-500'>Message</label>
-                <textarea id="message" placeholder='Type Your Message'  className='w-full h-32 p-2 border rounded-md bg-gray-500 text-white outline-none'></textarea>
-                
+                <textarea id="message" placeholder='Type Your Message' className='w-full h-32 p-2 border rounded-md bg-gray-500 text-white outline-none'></textarea>
+
               </div>
 
               <button className='w-[100%] border px-4 py-2 rounded-3xl border-white  hover:bg-white hover:text-black transition duration-300'>Send now</button>
@@ -88,7 +75,7 @@ function Contactuspage() {
             </div>
           </div>
           <div className='mt-10 mx-auto max-w-3xl rounded'>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0703131176906!2d4.601463673606019!3d8.492544697158381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10364cfd7eb29197%3A0xe6a4affa170d699a!2sECWA%20Church%20Fate-Tanke!5e0!3m2!1sen!2sng!4v1747833742750!5m2!1sen!2sng" width="800" height="350" className='rounded-md' allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.0703131176906!2d4.601463673606019!3d8.492544697158381!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10364cfd7eb29197%3A0xe6a4affa170d699a!2sECWA%20Church%20Fate-Tanke!5e0!3m2!1sen!2sng!4v1747833742750!5m2!1sen!2sng" width="800" height="350" className='rounded-md' allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </main>
       </section>
@@ -135,28 +122,28 @@ function Contactuspage() {
             <Link>About</Link>
             <Link>Service</Link>
             <Link>Contact</Link>
-            
+
           </div>
 
           <div className='flex flex-col gap-2'>
             <h1 className='text-white font-bold'>Get In Touch</h1>
             <div className='flex gap-2 items-center'>
-              <CiLocationOn className='text-white'/>
+              <CiLocationOn className='text-white' />
               <p className='text-gray-400 text-sm'>N016 Anuoluwapo Street Fate/tanke</p>
             </div>
             <div className='flex gap-2 items-center'>
-              <FaPhone className='text-white'/>
+              <FaPhone className='text-white' />
               <Link className='text-gray-400 text-sm'>09067823827</Link>
             </div>
             <div className='flex gap-2 items-center'>
-              <FaWhatsapp className='text-white'/>
+              <FaWhatsapp className='text-white' />
               <Link className='text-gray-400 text-sm'>09067823827</Link>
             </div>
             <div className='flex gap-2 items-center'>
-              <MdOutlineMailOutline className='text-white'/>
+              <MdOutlineMailOutline className='text-white' />
               <Link className='text-gray-400 text-sm'>Blocboyzzzz@gmail.com</Link>
             </div>
-           
+
           </div>
         </div>
       </footer>

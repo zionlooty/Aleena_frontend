@@ -109,22 +109,15 @@ const ViewPage = () => {
 
       <section className="p-9  bg-amber-50 flex flex-col min-h[100vh] flex-wrap">
         <div className="flex">
-          <div className="w-40 border h-10 flex justify-center items-center border-gray-300 text-center ">
-            <h1 className="text-gray-500">DESCRIPTION</h1>
-          </div>
-          <div className="w-40 border h-10 border-gray-300 flex justify-center items-center bg-yellow-400">
-            <h1 className="text-black">PRODUCT TAGS</h1>
+          <div className="w-40 border h-10 border-gray-300 flex justify-center items-center">
+            <h1 className="text-gray-500 uppercase text-2xl">{product.product_tag}</h1>
           </div>
           <div className="w-40 h-10 border border-gray-300 flex justify-center items-center">
             <h1 className="text-gray-500 ">REVIEW</h1>
           </div>
-          <div className="w-[80%] border h-10 border-gray-300">
-
-          </div>
-
         </div>
         <div className="w-[100%] h-13 border flex flex-wrap border-gray-300 mt-2 p-3">
-          <p className=" text-gray-600">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus, id optio. Delectus est eos nostrum minus assumenda eum debitis laudantium.</p>
+          <p className=" text-gray-600">{product.product_description}</p>
         </div>
       </section>
 
@@ -133,7 +126,7 @@ const ViewPage = () => {
         <h1 className="font-semibold text-lg p-6">YOU MAY ALSO LIKE</h1>
 
         <div className="flex justify-center flex-wrap p-5 items-center">
-          <div className="flex flex-wrap gap-10">
+          <div className="flex  flex-wrap gap-10">
             {
               similar.length > 0 && similar.map(item => {
                 return <div className="w-[250px] h-[320px] rounded-md  bg-gray-200 p-2">

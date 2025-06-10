@@ -6,29 +6,55 @@ import { toast } from 'sonner';
 
 const CartCard = ({ carts }) => {
 
-    const [quantity, setQuantity]= useState(carts.product_quantity || 1)
+    const [quantity, setQuantity]= useState(carts.product_quantity)
 
     const updateQuantity=async (newQuantity)=>{
         try {
-            await productServices.updateCartQuantity(carts.cart_id, newQuantity)
-            setQuantity(newQuantity)
+            setQuantity(newQuantity + 1)
+            console.log(carts.product_quantity)
+            if(carts.product_quantity > newQuantity){
+                await productServices.updateCartQuantity(carts.cart_id, newQuantity)
+            }
         } catch (error) {
             toast.error("failed to update quantity")
             console.error(error)
         }
     }
-    const increaseQuantity=()=>{
-        updateQuantity(quantity + 1)
-    }
-    const decreaseQuantity=()=>{
-        if(quantity>1) updateQuantity(quantity - 1)
+    // const increaseQuantity=()=>{
+    //         updateQuantity(quantity)
+    // }
+    // const decreaseQuantity=()=>{
+    //      updateQuantity(quantity - 1)
 
-    }
-
+    // }
+    const increaseQuantity = async () => {
+        const newQuantity = quantity + 1;
+        try {
+            await productServices.updateCartQuantity(carts.cart_id, newQuantity);
+            setQuantity(newQuantity);
+        } catch (error) {
+            toast.error("Failed to increase quantity");
+            console.error(error);
+        }
+    };
+    
+    const decreaseQuantity = async () => {
+        if (quantity <= 1) return;
+        const newQuantity = quantity - 1;
+        try {
+            await productServices.updateCartQuantity(carts.cart_id, newQuantity);
+            setQuantity(newQuantity);
+        } catch (error) {
+            toast.error("Failed to decrease quantity");
+            console.error(error);
+        }
+    };
+    
     const handleRemove = async (cart_id) =>{
         await productServices.deleteCart(cart_id)
         productServices.getCart()
       }
+   
       
       
     return (

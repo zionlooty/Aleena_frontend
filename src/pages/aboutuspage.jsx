@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Aboutuspage() {
   return (
    <>
-    <section className='pt-[100px]  bg-black flex justify-between flex-wrap min-h[100vh]'>
+    <section className='pt-[150px]  bg-black flex justify-between flex-wrap min-h[100vh]'>
         <div className='flex flex-col p-5 '>
             <small className='text-gray-100'>OUR THEATER</small>
             <h1 className='text-white text-3xl mb-7'><span className='font-extrabold text-white text-4xl'>ABOUT </span>US</h1>

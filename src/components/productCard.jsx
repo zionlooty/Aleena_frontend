@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { productServices } from '../services/apiServices'
 
 const ProductCard = ({ product, IMAGE_URL }) => {
 
-  const addProductToCart = async(product_id, product_price, product_quantity)=>{
+  const [quantity, setquantity] = useState(1)
+
+  const addProductToCart = async(product_id, product_price, product_quantity = quantity)=>{
       productServices.addToCart(product_id, product_price, product_quantity)
   }
 
@@ -30,7 +32,7 @@ const ProductCard = ({ product, IMAGE_URL }) => {
       <div className='flex'>
       <Link to={`/view/${product?.product_id}`} className='bg-amber-500 flex-1 py-2 text-white text-center'>View</Link>
         <button className='bg-amber-600 flex-1 py-2 text-white text-center cursor-pointer'onClick={()=>{
-          addProductToCart(product?.product_id, product?.product_price, product?.product_quantity)
+          addProductToCart(product?.product_id, product?.product_price)
         }}>Add to cart</button>
       </div>
     </div>

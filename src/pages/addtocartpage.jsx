@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ProductCard from "../components/productCard";
 import { useEffect, useState } from "react";
 import { productServices } from "../services/apiServices";
 import CartCard from "../components/CartCard";
@@ -16,8 +15,8 @@ const navigate = useNavigate()
     return sum + item.product_price * item.product_quantity
   }, 0) : null
  
-  const deliveryFee = 5000
-  const grandTotal = itemsSubtotal + deliveryFee
+  // const deliveryFee = 5000
+  const grandTotal = itemsSubtotal
 
   const fetchCart = async () => {
     const res = await productServices.getCart()
@@ -36,14 +35,7 @@ const navigate = useNavigate()
   return (
     <>
 
-      <div className="flex gap-2 p-6 pt-[100px]">
-        <h1>Home</h1>
-        <h1>Add to Cart</h1>
-      </div>
-
-      <div className="gridbody">
-
-
+      <div className="gridbody pt-[200px]">
         <aside className="flex flex-col gap-10">
 
 
@@ -52,7 +44,7 @@ const navigate = useNavigate()
 
             return (
 
-              <CartCard key={item.cart_id} carts={item} />
+              <CartCard key={item.cart_id} carts={item}  />
             )
           }):
           <div className="flex justify-center items-center flex-col gap-3">
@@ -66,10 +58,12 @@ const navigate = useNavigate()
 
         </aside>
         <main>
-          <div className="w-[70%] h-[30%] rounded-md bg-white shadow p-5">
+          <div className="w-[400px] h-[200px] rounded-md bg-white shadow p-5">
 
+            <div>
 
             <h1 className="text-2xl font-semibold mb-4">Cart Summary</h1>
+            </div>
             <div className="w-80 h-15 shadow">
               <div className="flex justify-between mb-3 p-2 ">
                 <h2 className=" text-xl">Subtotal</h2>
@@ -79,7 +73,7 @@ const navigate = useNavigate()
             <button onClick={()=>navigate("/order",{
               state:{
                 subtotal: itemsSubtotal,
-                deliveryFee: deliveryFee,
+                // deliveryFee: deliveryFee,
                 total: grandTotal
               }
             })} className="w-[100%] bg-amber-500 text-white py-3 px-4 rounded-md text-xl mt-2  hover:bg-amber-600">Checkout</button>

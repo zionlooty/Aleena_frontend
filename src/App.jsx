@@ -11,7 +11,7 @@ import ViewPage from "./pages/view"
 import ProfilePage from "./pages/profilepage"
 import Orderpage from "./pages/orderpage"
 import Addresspage from "./pages/addresspage"
-import Detailspage from "./pages/detailspage"
+// import Detailspage from "./pages/detailspage"
 
 
 const ProtectedRoute = ({children})=>{
@@ -51,7 +51,7 @@ function App() {
       <Route path="/profile"  element={<ProfilePage />}/>
       <Route path="/order"  element={<Orderpage />}/>
       <Route path="/address"  element={<Addresspage />}/>
-      <Route path="/details"  element={<Detailspage />}/>
+      {/* <Route path="/details"  element={<Detailspage />}/> */}
     </Routes> 
 
   

@@ -61,7 +61,7 @@ const Loginpage = () => {
                             <input
                                 type="submit"
                                 value={loading ? "Logging in..." : "Login"}
-                                className="w-40 rounded-md border border-slate-300 bg-black text-white p-2 hover:bg-blue-500 cursor-pointer"
+                                className="w-40 rounded-md border border-slate-300 bg-amber-500 text-white p-2  hover:bg-amber-600 cursor-pointer"
                                 disabled={loading}
                             />
                         </div>
