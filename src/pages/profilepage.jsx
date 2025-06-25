@@ -13,6 +13,8 @@ import useAuth from '../hooks/useAuth'
 const ProfilePage = () => {
     const [previewUrl, setpreviewUrl] = useState("")
     const [order, setOrder] = useState([])
+    const [isLoadingOrders, setIsLoadingOrders] = useState(false)
+    const [orderError, setOrderError] = useState("")
     const [name, setName] = useState({
         user_id: "",
         fullname: "",
@@ -60,11 +62,20 @@ const ProfilePage = () => {
 
 
     const fetchAllOrder = async () => {
+        setIsLoadingOrders(true)
+        setOrderError("")
         try {
-            const res = await orderServices.getOrder()
-            setOrder(res)
+            const res = await orderServices.getUserOrders()
+            setOrder(res || [])
+            console.log("Orders fetched:", res)
         } catch (error) {
-            toast.error(error.response.data.message)
+            console.error("Error fetching orders:", error)
+            const errorMessage = error.response?.data?.message || "Failed to fetch order history"
+            setOrderError(errorMessage)
+            toast.error(errorMessage)
+            setOrder([])
+        } finally {
+            setIsLoadingOrders(false)
         }
     }
 
@@ -73,34 +84,75 @@ const ProfilePage = () => {
         {
             title: "S/NO",
             dataIndex: "no",
-            key: "no"
+            key: "no",
+            width: 60
         },
         {
-            title: "product Name",
+            title: "Product Name",
             dataIndex: "product_name",
             key: "product_name",
+            width: 200
         },
         {
             title: "Quantity",
             dataIndex: "quantity",
             key: "quantity",
+            width: 80
+        },
+        {
+            title: "Amount",
+            dataIndex: "amount",
+            key: "amount",
+            width: 120,
+            render: (amount) => amount ? `₦${Intl.NumberFormat().format(amount)}` : 'N/A'
+        },
+        {
+            title: "Payment Status",
+            dataIndex: "payment_status",
+            key: "payment_status",
+            width: 120,
+            render: (status) => (
+                <span className={`px-2 py-1 rounded text-xs font-medium ${
+                    status === 'paid' ? 'bg-green-100 text-green-800' :
+                    status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                    status === 'failed' ? 'bg-red-100 text-red-800' :
+                    'bg-gray-100 text-gray-800'
+                }`}>
+                    {status || 'pending'}
+                </span>
+            )
         },
         {
             title: "Delivery Status",
             dataIndex: "delivery_status",
             key: "delivery_status",
+            width: 120,
+            render: (status) => (
+                <span className={`px-2 py-1 rounded text-xs font-medium ${
+                    status === 'delivered' ? 'bg-green-100 text-green-800' :
+                    status === 'shipped' ? 'bg-blue-100 text-blue-800' :
+                    status === 'processing' ? 'bg-yellow-100 text-yellow-800' :
+                    status === 'pending' ? 'bg-gray-100 text-gray-800' :
+                    'bg-red-100 text-red-800'
+                }`}>
+                    {status || 'pending'}
+                </span>
+            )
         },
         {
-            title: "Delivery Address",
-            dataIndex: "delivery_address",
-            key: "delivery_address",
+            title: "Order Date",
+            dataIndex: "createdAt",
+            key: "createdAt",
+            width: 120,
+            render: (date) => date ? new Date(date).toLocaleDateString() : 'N/A'
         },
         {
-            title: "Action",
-            dataIndex: "action",
-            key: "action"
+            title: "Invoice",
+            dataIndex: "invoice_no",
+            key: "invoice_no",
+            width: 120,
+            render: (invoice) => invoice || 'N/A'
         }
-
     ]
     useEffect(() => {
         fetchAllOrder()
@@ -122,6 +174,19 @@ const ProfilePage = () => {
 
     return (
         <>
+            <style jsx>{`
+                .order-history-table .ant-table-thead > tr > th {
+                    background-color: #f8fafc;
+                    font-weight: 600;
+                    color: #374151;
+                }
+                .order-history-table .ant-table-tbody > tr:hover > td {
+                    background-color: #f9fafb;
+                }
+                .order-history-table .ant-pagination {
+                    margin-top: 16px;
+                }
+            `}</style>
             <div className='flex justify-center items-center pt-[100px] '>
                 <form>
                     {
@@ -173,34 +238,79 @@ const ProfilePage = () => {
                     </div>
                 </form>
             </div>
-            <div className='p-15'>
-                <h2 className='text-lg font-bold mb-4'>Order history</h2>
-
-            </div>
-            {order.length > 0 ? <Table dataSource={order.map((order, index) => (
-                {
-                    no: index + 1,
-                    key: index,
-                    user_id: order.user_id,
-                    product_name: order.product_name,
-                    delivery_address: order.delivery_address,
-                    delivery_status: order.delivery_status,
-                    quantity: order.product_quantity,
-                    action: (
-                        <Link>View </Link>
-
-                    )
-
-                }
-            ))}
-                columns={columns}
-
-            /> :
-                <div className='flex flex-col items-center justify-center  h-96 bg-white rounded-md shadow-md'>
-                    <GoTrash className='text-8xl text-gray-300 mb-4' />
-                    <h1 className='text-5xl text-gray-300 font-semibold'>No Order found for user</h1>
+            <div className='p-5 mt-8'>
+                <div className='flex justify-between items-center mb-6'>
+                    <h2 className='text-2xl font-bold text-gray-800'>Order History</h2>
+                    <button
+                        onClick={fetchAllOrder}
+                        disabled={isLoadingOrders}
+                        className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50'
+                    >
+                        {isLoadingOrders ? 'Refreshing...' : 'Refresh'}
+                    </button>
                 </div>
-            }
+
+                {isLoadingOrders ? (
+                    <div className='flex justify-center items-center h-64'>
+                        <div className='text-center'>
+                            <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4'></div>
+                            <p className='text-gray-600'>Loading your orders...</p>
+                        </div>
+                    </div>
+                ) : orderError ? (
+                    <div className='flex flex-col items-center justify-center h-64 bg-red-50 rounded-md border border-red-200'>
+                        <div className='text-center'>
+                            <div className='text-red-500 text-6xl mb-4'>⚠️</div>
+                            <h3 className='text-xl font-semibold text-red-800 mb-2'>Failed to Load Orders</h3>
+                            <p className='text-red-600 mb-4'>{orderError}</p>
+                            <button
+                                onClick={fetchAllOrder}
+                                className='px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600'
+                            >
+                                Try Again
+                            </button>
+                        </div>
+                    </div>
+                ) : order.length > 0 ? (
+                    <div className='bg-white rounded-lg shadow-sm border'>
+                        <Table
+                            dataSource={order.map((orderItem, index) => ({
+                                key: orderItem.order_id || index,
+                                no: index + 1,
+                                product_name: orderItem.product_name,
+                                quantity: orderItem.quantity,
+                                amount: orderItem.amount,
+                                payment_status: orderItem.payment_status,
+                                delivery_status: orderItem.delivery_status,
+                                delivery_address: orderItem.delivery_address,
+                                createdAt: orderItem.createdAt,
+                                invoice_no: orderItem.invoice_no
+                            }))}
+                            columns={columns}
+                            pagination={{
+                                pageSize: 10,
+                                showSizeChanger: true,
+                                showQuickJumper: true,
+                                showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} orders`
+                            }}
+                            scroll={{ x: 1000 }}
+                            className="order-history-table"
+                        />
+                    </div>
+                ) : (
+                    <div className='flex flex-col items-center justify-center h-64 bg-gray-50 rounded-md border border-gray-200'>
+                        <GoTrash className='text-6xl text-gray-400 mb-4' />
+                        <h3 className='text-xl font-semibold text-gray-600 mb-2'>No Orders Found</h3>
+                        <p className='text-gray-500 mb-4'>You haven't placed any orders yet.</p>
+                        <Link
+                            to="/products"
+                            className='px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors'
+                        >
+                            Start Shopping
+                        </Link>
+                    </div>
+                )}
+            </div>
 
 
         </>

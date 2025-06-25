@@ -51,11 +51,7 @@ const navigate = useNavigate()
             <TbTrash className="text-7xl text-gray-500"/>
             <h1 className="capitalize text-4xl text-gray-500">{empty}</h1>
           </div>
-          
         }
-
-
-
         </aside>
         <main>
           <div className="w-[400px] h-[200px] rounded-md bg-white shadow p-5">

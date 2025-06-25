@@ -1,125 +1,176 @@
-import { CiSearch } from "react-icons/ci";
+import React from "react";
 import { Link } from "react-router-dom";
-import { IoPersonOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
-import { CiShoppingCart } from "react-icons/ci";
-import { RiArrowDropDownLine } from "react-icons/ri";
 import { SlHome } from "react-icons/sl";
-import { FaCircle } from "react-icons/fa";
-import { FaRegCircle } from "react-icons/fa";
+import { FaCircle, FaRegCircle, FaArrowRight, FaStar } from "react-icons/fa";
 import { Fade } from "react-awesome-reveal";
+import { Button, Card, Row, Col, Carousel, Rate } from "antd";
+import { MdLocalShipping, MdSecurity, MdSupport, MdVerified } from "react-icons/md";
 
 
 function Homepage() {
+  const featuredProducts = [
+    { id: 1, name: "Diamond Engagement Ring", price: "$2,499", image: "/assetss/jewerly/c.png", rating: 5 },
+    { id: 2, name: "Gold Necklace", price: "$899", image: "/assetss/jewerly/ii.png", rating: 4.8 },
+    { id: 3, name: "Silver Bracelet", price: "$299", image: "/assetss/jewerly/ring.png", rating: 4.9 },
+    { id: 4, name: "Pearl Earrings", price: "$199", image: "/assetss/jewerly/c.png", rating: 4.7 }
+  ];
+
+  const testimonials = [
+    { name: "Sarah Johnson", text: "Beautiful jewelry with excellent quality. Highly recommended!", rating: 5 },
+    { name: "Michael Chen", text: "Amazing customer service and fast delivery. Love my purchase!", rating: 5 },
+    { name: "Emma Davis", text: "The craftsmanship is outstanding. Will definitely shop again.", rating: 5 }
+  ];
+
   return (
     <>
-
-
-
-      <section className=" herosection flex justify-between min-h[100vh] pt-[100px]">
-        <div className="flex  flex-col justify-between p-5 gap-3 ">
-          <h1 className="text-black text-2xl md:text-3xl">Introducing The <br />Lost Day Collection</h1>
-          <p className="text-gray-700 text-sm md:text-base mt-2" >Ring, occassion pieces pandora & more collection</p>
-          <button className="py-2 px-5 border w-[max-content] cursor-pointer">shop now</button>
+      {/* Hero Section */}
+      <section className="herosection relative flex items-center min-h-[70vh] pt-[120px] overflow-hidden">
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-2xl">
+            <Fade direction="up" duration={1000}>
+              <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight mb-6">
+                Discover Timeless
+                <span className="block bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
+                  Elegance
+                </span>
+              </h1>
+              <p className="text-gray-200 text-lg md:text-xl mb-8 leading-relaxed">
+                Exquisite jewelry crafted with precision and passion. From engagement rings to statement pieces, find your perfect match.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/products">
+                  <Button
+                    type="primary"
+                    size="large"
+                    className="bg-gradient-to-r from-yellow-500 to-yellow-600 border-0 rounded-lg px-8 py-6 h-auto text-lg font-semibold"
+                    icon={<FaArrowRight />}
+                  >
+                    Shop Collection
+                  </Button>
+                </Link>
+                <Button
+                  type="default"
+                  size="large"
+                  className="border-white text-white hover:bg-white hover:text-gray-900 rounded-lg px-8 py-6 h-auto text-lg font-semibold"
+                >
+                  Learn More
+                </Button>
+              </div>
+            </Fade>
+          </div>
         </div>
-        <div></div>
       </section>
 
 
-      <section className=" flex p-10 flex-wrap gap-10 justify-center items-center min-h[100vh]">
-        <Fade direction="left" duration={2000}>
-          <div className="image flex flex-wrap justify-between w-70 h-50">
+      {/* Features Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-6">
+          <Row gutter={[32, 32]} className="items-center">
+            <Col xs={24} lg={8}>
+              <Fade direction="left" duration={1000}>
+                <Card
+                  className="image h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
+                  bodyStyle={{ padding: 0 }}
+                >
+                  <div className="relative h-full flex items-end">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="relative z-10 p-6 text-white">
+                      <span className="text-yellow-400 text-sm font-medium">2024 COLLECTION</span>
+                      <h2 className="text-2xl font-bold mt-2 mb-4">Luxury Rings & <br />Engagement Sets</h2>
+                      <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
+                        EXPLORE NOW →
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              </Fade>
+            </Col>
 
-            < div className="justify-center items-center p-5">
-              <small className="text-gray-600">2021 FASHION</small>
-              <h1 className="text-2xl font-semi-bold">Just Lunched <br /> Desk The Hals</h1>
-              <button className="border-b-2">SEE MORE</button>
-            </div>
+            <Col xs={24} lg={8}>
+              <Fade direction="up" duration={1000} delay={200}>
+                <Card
+                  className="imagec h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
+                  bodyStyle={{ padding: 0 }}
+                >
+                  <div className="relative h-full flex items-end">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="relative z-10 p-6 text-white">
+                      <span className="text-yellow-400 text-sm font-medium">TRENDING NOW</span>
+                      <h2 className="text-2xl font-bold mt-2 mb-4">Necklaces & <br />Statement Pieces</h2>
+                      <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
+                        SHOP NOW →
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              </Fade>
+            </Col>
 
-
-          </div>
-        </Fade>
-        <Fade direction="down" duration={2000}>
-          <div className="imagec flex justify-between w-70 h-50">
-            < div className="justify-center p-5">
-              <small className="text-gray-600">2021 FASHION</small>
-              <h1 className="text-2xl font-semi-bold">Necklaces & <br /> Body Jewles</h1>
-              <button className="border-b-2">SHOP NOW</button>
-            </div>
-          </div>
-        </Fade>
-        <Fade direction="right" duration={2000}>
-          <div className="imagecon flex justify-between w-70 h-50">
-            < div className="justify-center p-5">
-              <small className="text-gray-600">NEW COLLECTION</small>
-              <h1 className="text-2xl color- text-white font-semi-bold">Jewelry & <br /> Charm Rings</h1>
-              <button className="border-b-2 text-white">SEE MORE</button>
-            </div>
-          </div>
-        </Fade>
-
+            <Col xs={24} lg={8}>
+              <Fade direction="right" duration={1000} delay={400}>
+                <Card
+                  className="imagecon h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
+                  bodyStyle={{ padding: 0 }}
+                >
+                  <div className="relative h-full flex items-end">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="relative z-10 p-6 text-white">
+                      <span className="text-yellow-400 text-sm font-medium">NEW ARRIVALS</span>
+                      <h2 className="text-2xl font-bold mt-2 mb-4">Bracelets & <br />Charm Collections</h2>
+                      <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
+                        DISCOVER →
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              </Fade>
+            </Col>
+          </Row>
+        </div>
       </section>
 
 
-      <section className="justify-center flex flex-col flex-wrap min-h[100vh] text-center items-center p-5  gap-5">
-        <h1 className="text-2xl font-semibold text-center items-center">Popular Categories</h1>
-        <div className="flex flex-row flex-wrap justify-center gap-10">
-
-          <div className="w-40 h-40 rounded-full flex transition-transform duration-300 hover:scale-105  flex-col items-center justify-center ">
-            <div className="flex w-30  h-30 bg-gray-200 rounded-full justify-center item-center">
-              <img src="/assetss/jewerly/i.png" alt="" width={100} />
-            </div>
-            <h1 className="font-semibold text-sm text-center mt-2" >NECKLACE</h1>
+      {/* Categories Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Popular Categories</h2>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+              Discover our curated collection of fine jewelry, each piece crafted with attention to detail and timeless elegance.
+            </p>
           </div>
 
-          <div className=" h-40 w-40 rounded-full flex flex-col items-center transition-transform duration-300 hover:scale-105 justify-center ">
-            <div className=" h-30 w-30  flex justify-center bg-gray-200  rounded-full item-center">
-              <img src="/assetss/jewerly/png.png" alt="" width={100} />
-            </div>
-            <h1 className="font-semibold text-sm text-center mt-2" >RINGS</h1>
-          </div>
-
-
-          <div className="w-40  h-40 rounded-full transition-transform duration-300 hover:scale-105  flex flex-col items-center justify-center">
-            <div className="flex justify-center   h-30 w-30 item-center  bg-gray-200 rounded-full">
-              <img src="/assetss/jewerly/wb.png" alt="" width={130} />
-
-            </div>
-            <h1 className="font-semibold text-sm text-center mt-2">BRACELETS</h1>
-          </div>
-
-
-          <div className="w-40 border-none h-40 rounded-full transition-transform duration-300 hover:scale-105 flex flex-col items-center justify-center ">
-            <div className="flex w-30 h-30 rounded-full justify-center bg-gray-200 item-center">
-              <img src="/assetss/jewerly/i.png" alt="" width={100} />
-
-            </div>
-            <h1 className="font-semibold text-sm text-center mt-2">EARRINGS</h1>
-          </div>
-
-
-
-          <div className="w-40 border-none h-40 rounded-full transition-transform duration-300 hover:scale-105 flex flex-col items-center justify-center ">
-            <div className="flex justify-center w-30 h-30 rounded-full bg-gray-200 item-center">
-              <img src="/assetss/jewerly/76.png" alt="" width={100} />
-
-            </div>
-            <h1 className="font-semibold text-sm text-center mt-2">CHAIN & DANGLES</h1>
-          </div>
-
-
-
-
-          <div className="w-40 border-none h-40 flex-col transition-transform duration-300 hover:scale-105  rounded-full flex items-center justify-center ">
-            <div className="flex justify-center w-30 h-30 bg-gray-200 rounded-full item-center">
-              <img src="/assetss/jewerly/i.png" alt="" width={100} />
-
-            </div>
-            <h1 className="font-semibold text-sm text-center mt-2">EARRINGS</h1>
-          </div>
-
-
-
+          <Row gutter={[24, 24]} justify="center">
+            {[
+              { name: "NECKLACES", image: "/assetss/jewerly/i.png" },
+              { name: "RINGS", image: "/assetss/jewerly/png.png" },
+              { name: "BRACELETS", image: "/assetss/jewerly/wb.png" },
+              { name: "EARRINGS", image: "/assetss/jewerly/i.png" },
+              { name: "CHAINS", image: "/assetss/jewerly/76.png" },
+              { name: "WATCHES", image: "/assetss/jewerly/i.png" }
+            ].map((category, index) => (
+              <Col xs={12} sm={8} md={6} lg={4} key={index}>
+                <Fade direction="up" duration={800} delay={index * 100}>
+                  <div className="group cursor-pointer">
+                    <div className="relative">
+                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                        <img
+                          src={category.image}
+                          alt={category.name}
+                          className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h3 className="text-center mt-4 font-semibold text-gray-800 group-hover:text-yellow-600 transition-colors duration-300">
+                      {category.name}
+                    </h3>
+                  </div>
+                </Fade>
+              </Col>
+            ))}
+          </Row>
         </div>
       </section>
 

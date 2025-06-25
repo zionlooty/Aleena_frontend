@@ -3,7 +3,7 @@ import { toast } from "sonner"
 
 const token = localStorage.getItem("token")
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API || "http://localhost:5000/",
+    baseURL: import.meta.env.VITE_API || "http://localhost:9000/",
     headers: {
         "Authorization": `Bearer ${token}`
     }
@@ -54,18 +54,43 @@ export const productServices = {
            return toast.error(error.response.data.message)
         }
     }, 
-    updateCartQuantity: async (cart_id, quantity)=>{
-        const res =await api.patch(`/cart/${cart_id}/quantity`,{
-            product_quantity:quantity
-        })
+    updateCartQuantity: async (cart_id, quantity) => {
+        try {
+            const res = await api.patch(`/cart/${cart_id}/quantity`, {
+                product_quantity: quantity
+            })
+            return res.data
+        } catch (error) {
+            console.error("Update cart quantity error:", error)
+            throw error
+        }
     }
 }
 
 
 export const orderServices={
-    getOrder: async ()=>{
+    getOrder: async (user_id)=>{
         const res = await api.get(`/order/${user_id}`)
         return res.data.message
+    },
+    getUserOrders: async () => {
+        try {
+            const { data } = await api.get("/user/orders")
+            return data.message
+        } catch (error) {
+            throw error
+        }
+    },
+    placeOrder: async (delivery_address, amount) => {
+        try {
+            const { data } = await api.post("/place/order", {
+                delivery_address,
+                amount
+            })
+            return data
+        } catch (error) {
+            throw error
+        }
     }
 }
 

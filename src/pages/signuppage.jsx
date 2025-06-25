@@ -45,7 +45,7 @@ const Signup = () => {
         }
 
         try {
-            const data = await axios.post("http://localhost:5000/new/user", { ...formData });
+            const data = await axios.post("http://localhost:9000/api/new/user", { ...formData });
             toast.success(data.data.message);
             setTimeout(() => {
                 navigate("/login")
