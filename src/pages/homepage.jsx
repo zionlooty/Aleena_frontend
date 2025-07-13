@@ -69,61 +69,67 @@ function Homepage() {
           <Row gutter={[32, 32]} className="items-center">
             <Col xs={24} lg={8}>
               <Fade direction="left" duration={1000}>
-                <Card
-                  className="image h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
-                  bodyStyle={{ padding: 0 }}
-                >
-                  <div className="relative h-full flex items-end">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="relative z-10 p-6 text-white">
-                      <span className="text-yellow-400 text-sm font-medium">2024 COLLECTION</span>
-                      <h2 className="text-2xl font-bold mt-2 mb-4">Luxury Rings & <br />Engagement Sets</h2>
-                      <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
-                        EXPLORE NOW →
-                      </Button>
+                <Link to="/products?category=ring">
+                  <Card
+                    className="image h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
+                    bodyStyle={{ padding: 0 }}
+                  >
+                    <div className="relative h-full flex items-end">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="relative z-10 p-6 text-white">
+                        <span className="text-yellow-400 text-sm font-medium">2024 COLLECTION</span>
+                        <h2 className="text-2xl font-bold mt-2 mb-4">Luxury Rings & <br />Engagement Sets</h2>
+                        <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
+                          EXPLORE NOW →
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               </Fade>
             </Col>
 
             <Col xs={24} lg={8}>
               <Fade direction="up" duration={1000} delay={200}>
-                <Card
-                  className="imagec h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
-                  bodyStyle={{ padding: 0 }}
-                >
-                  <div className="relative h-full flex items-end">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="relative z-10 p-6 text-white">
-                      <span className="text-yellow-400 text-sm font-medium">TRENDING NOW</span>
-                      <h2 className="text-2xl font-bold mt-2 mb-4">Necklaces & <br />Statement Pieces</h2>
-                      <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
-                        SHOP NOW →
-                      </Button>
+                <Link to="/products?category=necklace">
+                  <Card
+                    className="imagec h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
+                    bodyStyle={{ padding: 0 }}
+                  >
+                    <div className="relative h-full flex items-end">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="relative z-10 p-6 text-white">
+                        <span className="text-yellow-400 text-sm font-medium">TRENDING NOW</span>
+                        <h2 className="text-2xl font-bold mt-2 mb-4">Necklaces & <br />Statement Pieces</h2>
+                        <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
+                          SHOP NOW →
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               </Fade>
             </Col>
 
             <Col xs={24} lg={8}>
               <Fade direction="right" duration={1000} delay={400}>
-                <Card
-                  className="imagecon h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
-                  bodyStyle={{ padding: 0 }}
-                >
-                  <div className="relative h-full flex items-end">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="relative z-10 p-6 text-white">
-                      <span className="text-yellow-400 text-sm font-medium">NEW ARRIVALS</span>
-                      <h2 className="text-2xl font-bold mt-2 mb-4">Bracelets & <br />Charm Collections</h2>
-                      <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
-                        DISCOVER →
-                      </Button>
+                <Link to="/products?category=bracelet">
+                  <Card
+                    className="imagecon h-80 rounded-2xl border-0 shadow-lg overflow-hidden group cursor-pointer"
+                    bodyStyle={{ padding: 0 }}
+                  >
+                    <div className="relative h-full flex items-end">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="relative z-10 p-6 text-white">
+                        <span className="text-yellow-400 text-sm font-medium">NEW ARRIVALS</span>
+                        <h2 className="text-2xl font-bold mt-2 mb-4">Bracelets & <br />Charm Collections</h2>
+                        <Button type="link" className="text-white p-0 h-auto font-semibold hover:text-yellow-400">
+                          DISCOVER →
+                        </Button>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </Link>
               </Fade>
             </Col>
           </Row>
@@ -143,18 +149,51 @@ function Homepage() {
 
           <Row gutter={[24, 24]} justify="center">
             {[
-              { name: "NECKLACES", image: "/assetss/jewerly/i.png" },
-              { name: "RINGS", image: "/assetss/jewerly/png.png" },
-              { name: "BRACELETS", image: "/assetss/jewerly/wb.png" },
-              { name: "EARRINGS", image: "/assetss/jewerly/i.png" },
-              { name: "CHAINS", image: "/assetss/jewerly/76.png" },
-              { name: "WATCHES", image: "/assetss/jewerly/i.png" }
+              {
+                name: "NECKLACES",
+                image: "/assetss/jewerly/ii.png",
+                description: "Elegant necklaces for every occasion",
+                category: "necklaces"
+              },
+              {
+                name: "RINGS",
+                image: "/assetss/jewerly/ring.png",
+                description: "Beautiful rings and engagement sets",
+                category: "Rings"
+              },
+              {
+                name: "BRACELETS",
+                image: "/assetss/jewerly/wb.png",
+                description: "Stylish bracelets and bangles",
+                category: "Bracelets"
+              },
+              {
+                name: "EARRINGS",
+                image: "/assetss/jewerly/c.png",
+                description: "Stunning earrings for any style",
+                category: "Earrings"
+              },
+              {
+                name: "CHAINS",
+                image: "/assetss/jewerly/76.png",
+                description: "Premium chains and pendants",
+                category: "Chains"
+              },
+              {
+                name: "WATCHES",
+                image: "/assetss/jewerly/gold.png",
+                description: "Luxury watches and timepieces",
+                category: "Watches"
+              }
             ].map((category, index) => (
               <Col xs={12} sm={8} md={6} lg={4} key={index}>
                 <Fade direction="up" duration={800} delay={index * 100}>
-                  <div className="group cursor-pointer">
+                  <Link
+                    to={`/products?category=${encodeURIComponent(category.category)}`}
+                    className="group cursor-pointer block"
+                  >
                     <div className="relative">
-                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
+                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl overflow-hidden">
                         <img
                           src={category.image}
                           alt={category.name}
@@ -163,10 +202,15 @@ function Homepage() {
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <h3 className="text-center mt-4 font-semibold text-gray-800 group-hover:text-yellow-600 transition-colors duration-300">
-                      {category.name}
-                    </h3>
-                  </div>
+                    <div className="text-center mt-4">
+                      <h3 className="font-semibold text-gray-800 group-hover:text-yellow-600 transition-colors duration-300 mb-1">
+                        {category.name}
+                      </h3>
+                      <p className="text-sm text-gray-500 group-hover:text-gray-600 transition-colors duration-300">
+                        {category.description}
+                      </p>
+                    </div>
+                  </Link>
                 </Fade>
               </Col>
             ))}
